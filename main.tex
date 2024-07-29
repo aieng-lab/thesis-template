@@ -1,0 +1,245 @@
+\documentclass[a4paper,12pt,notitlepage,twoside,openright]{report}
+\usepackage[a4paper, top=1.1in, bottom=1.1in, left=1in, right=1in,bindingoffset=0.5in]{geometry}
+% you might remove the twoside + openright option of the documentclass and the bindingoffset option of the geometry package to generate a nice looking PDF file (that is not used for printing)
+
+% Commands to switch between Master and Bachelor
+\newcommand{\master}{\def\thesistype{Master Thesis}}
+\newcommand{\bachelor}{\def\thesistype{Bachelor Thesis}}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{glossaries}
+\usepackage{libertine} % font of the libertine family
+\usepackage[scaled=0.85]{inconsolata} % scale down the monospaced libertine font to better match the default font
+
+\usepackage[style=numeric, backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\pagestyle{fancy} % Header with current chapter and section title
+\renewcommand{\headrulewidth}{0pt} % Remove the line below the header
+
+
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[C]{\thepage} % page number on the bottom center
+\fancyhead[LE]{\leftmark} % section/chapter name on right header for even pages
+\fancyhead[RO]{\rightmark} % section/chapter name on left header for odd pages
+
+% Ensure plain pages (chapter start) have the desired header/footer settings
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage} % page number on the bottom center
+}
+
+
+\newcommand{\titlepageformat}{
+    \begin{titlepage}
+        \newgeometry{left=1in, right=1in, top=1in, bottom=1in} % Temporarily set margins for the title page with equidistant margins to each side
+        \begin{center}
+            \vspace{0.5in}  
+         
+            \includegraphics[width=0.4\textwidth]{img/logo.png}
+            
+            \vspace*{0.4in}
+    
+            \LARGE \thesistype
+            \vspace{0.8in}
+            
+            \Huge \textbf{\thesistitle}
+            
+            \vspace{0.4in}
+            
+            \LARGE\textbf{\authorname}
+            
+            \vspace{1.5in}
+            
+           \large Supervisor \\
+            \LARGE \supervisorname\\
+            \supervisornameII\\
+            \supervisornameIII
+            
+            \vfill
+            
+            \large \submissiondate
+            
+            \vspace{0.5in}
+            
+            \universityname \\
+            \facultyname \\
+            \departmentname
+        \end{center}
+    \end{titlepage}
+}
+
+\newcommand{\confirmation}{
+        \cleardoublepage
+       \begin{flushleft}
+            \textbf{\LARGE\ Confirmation}\\\vspace{0.2in}
+           
+            I hereby declare that I have independently prepared the \thesistype\ submitted on \submissiondate\ entitled
+            \begin{center}
+                \thesistitle
+            \end{center}
+            under the supervision of \supervisorname. I have completed and written the thesis independently and have properly cited all references.
+        \end{flushleft}
+        \vspace{0.5in}
+        Passau, \submissiondate
+        \cleardoublepage
+}
+
+\makeglossaries
+
+% -----------------------------------------------------------
+% DO NOT CHANGE THE TEMPLATE CODE ABOVE THIS LINE
+% -----------------------------------------------------------
+
+
+% Select your thesis type
+\bachelor
+%\master
+
+% Insert your personal information
+\newcommand{\thesistitle}{This is the Title \\of the Thesis}
+\newcommand{\authorname}{Your Name}
+\newcommand{\supervisorname}{Prof. Dr. Steffen Herbold}
+\newcommand{\supervisornameII}{2nd Supervisor} % 2nd supervisor
+\newcommand{\supervisornameIII}{} % 3rd supervisor if necessary
+\newcommand{\submissiondate}{\today}
+\newcommand{\universityname}{University of Passau}
+\newcommand{\facultyname}{Faculty of Computer Science and Mathematics}
+\newcommand{\departmentname}{Chair of AI Engineering}
+
+
+% Your packages
+
+
+
+% Your Acronyms
+\newacronym{bert}{BERT}{Bidirectional Encoder Representations from Transformers}
+
+
+\begin{document}
+% Front matter with Roman numerals
+\pagenumbering{roman}
+
+\titlepageformat
+
+\confirmation
+
+% Abstract
+\begin{abstract}
+    This is the abstract of the thesis. It provides a brief summary of the research, including the main findings and conclusions.
+\end{abstract}
+
+\tableofcontents
+% Switch to Arabic numerals for main content
+\cleardoublepage
+\pagenumbering{arabic}
+
+\chapter{Introduction}\label{chp:introduction}
+This is the introduction of the thesis. In this \LaTeX\ template, we provide an example structure for a thesis you might use yourself. 
+Additionally, we provide some basic examples regarding the expected thesis style, such as using citations, tables, and figures. 
+
+
+\chapter{Foundations}
+
+\section{Background}\label{sec:background}
+
+This section should include the essential theoretical background and definitions that are fundamental to your thesis.
+
+\section{Related Work}
+
+Here, you discuss the existing research and works related to your thesis topic.
+
+You can cite references using \texttt{\textbackslash cite\{reference\_key\}}: \cite{bert}. If you refer directly to what the authors of your cited work did, you can use the citation tag like a noun as part of the sentence: \emph{“\cite{bert} showed that \dots”}. For important citations, you can also emphasize the author(s): \emph{“\citeauthor{bert} \cite{bert} showed that \dots”}.
+
+Otherwise, the citations are typically used at the end of the sentence: \emph{“Some significant work has been done in this field \cite*{bert}.”}
+
+Insert your biblatex citations in \texttt{references.bib}. Ensure that each entry includes, at a minimum, the title, author(s), year of publication, and publication details (publisher, journal, \dots).
+
+Also, note the good research practice principles of the University of Passau\footnote{\url{https://www.uni-passau.de/en/research/good-research-practice} [Accessed: July 26, 2024]}. A great guideline how to write a thesis, especially as a non-native English speaker, is the one by \citeauthor{GlasmanDeal2009ScienceRW}~\cite{GlasmanDeal2009ScienceRW}.
+
+In general, avoid URLs in your thesis as much as possible. For instance, instead of referring to a website like \url{https://huggingface.co/docs/transformers}, use the suggested citation~\cite{transformers}.
+
+
+\chapter{Methodology}
+This chapter outlines the methods and techniques used to conduct your research.
+
+\section{Thesis Formatting}
+We summarize some basic expected formatting guidelines in the following subsections. Unlike this simple template, your thesis should avoid having only a single section or subsection to ensure comprehensive coverage and organization.
+
+\subsection{Chapter and Section Titles}
+
+For consistency and professionalism in your thesis, use Title Case for all chapter and section titles. Capitalize the first and last words, as well as all major words (nouns, verbs, adjectives). Do not capitalize articles (a, an, the), conjunctions (and, but), or prepositions (in, of) unless they are the first or last word. For example, use \emph{“Good Style of Writing Chapter Names”}.
+
+\subsection{Tables}\label{subsec:tables}
+
+Tables should be formatted professionally and consistently. You can refer to this specific table as "Table~\ref{tab:example}". Notice that table is written with a cased \emph{“T”}. The same holds for figures (Figure~\ref{fig:example}), chapters (Chapter~\ref{chp:introduction}), and sections (Section~\ref{sec:background} and Section~\ref{subsec:tables}). Typically, tables and figures should be rendered \emph{nearby} where they are first mentioned.  
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        Column 1 & Column 2 & Column 3 \\
+        \midrule
+        Data 1 & Data 2 & Data 3 \\
+        Data 4 & Data 5 & Data 6 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Example Table}
+    \label{tab:example}
+\end{table}
+
+\subsection{Figures}
+Figures should be clear (with saturated colors and well-sized text) and have appropriate captions. Preferably, use vector graphics or high-resolution pixel graphics. For instance, if you generate plots with \texttt{matplotlib}, export the plot as a \texttt{.pdf} file to get a vector graphic.
+
+Additionally, use the same font for your plots as in this thesis. To use the used font \emph{libertine} in \texttt{matplotlib} plots, download the font\footnote{\url{http://www.linuxlibertine.org/} [Accessed: July 26, 2024]}, install it on your system (if necessary), and add the following Python code:
+
+\begin{verbatim}
+from matplotlib import rcParams
+rcParams['font.family'] = 'serif'
+font_name = 'Linux Libertine O' # Name of the Libertine font installed on your system
+rcParams['font.serif'] = [font_name]  
+\end{verbatim}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\textwidth]{example-image}
+    \caption{Example Figure}
+    \label{fig:example}
+\end{figure}
+
+\subsection{Acronyms}
+You can use define acronyms in the preamble and simply use it in your document with the \texttt{\textbackslash gls} command. When the acronym is used the first time in the document, the full form is generated \gls{bert}, while subsequent uses will only show the acronym itself \gls{bert}. Sometimes, it can be beneficial to reintroduce acronyms multiple times (e.g., an acronym first used in the introduction and later discussed in more detail) to ensure clarity and comprehension for readers who may not remember the acronym's full form from its initial introduction.
+
+\chapter{Results}
+
+Present the results of your experiments, case studies, etc. 
+
+\chapter{Discussion}
+
+Discuss the results of your work in a broader context, e.g., how they relate to the state-of-the-art, what the lessons learned are, ...
+
+\chapter{Conclusion}
+
+Summarize the key findings of your research and suggest possible directions for future work.
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Acronyms}
+\printglossary[type=\acronymtype, title={List of Acronyms}, toctitle={List of Acronyms}, nogroupskip]
+
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\printbibliography
+
+\appendix
+
+\chapter{Data}
+Optional: Include any supplementary material, such as raw data, detailed calculations, or additional figures.
+
+\chapter{Figures}
+
+
+\end{document}

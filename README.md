@@ -7,11 +7,11 @@ This template offers a structured example for your thesis and includes basic for
 ## Usage
 - Download the files
 - Choose Your Platform:
-  - **Online:** Upload the files to [Overleaf](https://www.overleaf.com) for cloud-based editing and compilation.
+  - **Online:** Upload the files to [Overleaf](https://www.overleaf.com) for cloud-based editing and compilation
   - **Local**: Install a [LaTeX distribution](https://www.latex-project.org/get) on your computer and compile the files locally
 - Select your thesis type in `main.tex` by uncommenting either `\bachelor` or `\master` in the preamble (`\bachelor` is activated by default)
 - Insert personal information in the preamble of `main.tex` (`\authorname`, ...)
-- Compile the LaTeX file to generate the PDF. We recommend using `pdfLaTeX`, but other engines may also work.
+- Compile the LaTeX file to generate the PDF. We recommend using `pdfLaTeX`, but other engines may also work
 - Write your thesis ;)
 
 ## Notes
